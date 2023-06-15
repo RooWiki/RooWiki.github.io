@@ -176,26 +176,26 @@ scene.add(ArbolPointLight5);
 // Verde
 const ArbolPointLight1 = new THREE.PointLight(0x00FF17, 100, 3);
 ArbolPointLight1.position.set(-3, 3, 0);
-ArbolPointLight1.castShadow = true
+ArbolPointLight1.castShadow = false
 scene.add(ArbolPointLight1);
 
 
 // Azul
 const ArbolPointLight2 = new THREE.PointLight(0x00C5FF, 100, 3);
 ArbolPointLight2.position.set(-3.5, 3.3, 0);
-ArbolPointLight2.castShadow = true
+ArbolPointLight2.castShadow = false
 scene.add(ArbolPointLight2);
 
 // Naranja
 const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 100, 3);
 ArbolPointLight3.position.set(-2.2, 2.3, 0);
-ArbolPointLight3.castShadow = true
+ArbolPointLight3.castShadow = false
 scene.add(ArbolPointLight3);
 
 // Azul
 const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
 ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
-ArbolPointLight4.castShadow = true
+ArbolPointLight4.castShadow = false
 scene.add(ArbolPointLight4);
 
 // Farol
