@@ -153,8 +153,8 @@ scene.add(spotLight.target);
 // Luz giroscopio
 
 const giroscopio = new THREE.PointLight(0xFFF300, 500, 3);
-giroscopio.position.set(0, 5, 0);
-giroscopio.castShadow = true
+giroscopio.position.set(0, 4, 0);
+giroscopio.castShadow = false
 scene.add(giroscopio);
 
 
@@ -162,14 +162,14 @@ scene.add(giroscopio);
 // Rojo
 const ArbolPointLight0 = new THREE.PointLight(0xFF0404, 100, 2);
 ArbolPointLight0.position.set(-3, 3, 3);
-ArbolPointLight0.castShadow = true
+ArbolPointLight0.castShadow = false
 scene.add(ArbolPointLight0);
 
 
 // Naranja
 const ArbolPointLight5 = new THREE.PointLight(0xFF7100, 30, 2);
 ArbolPointLight5.position.set(-1.5, 2.1, 2.5);
-ArbolPointLight5.castShadow = true
+ArbolPointLight5.castShadow = false
 scene.add(ArbolPointLight5);
 
 
@@ -212,8 +212,6 @@ Farol2.castShadow = true
 scene.add(Farol2);
 
 
-
-
 // Esmeraldas
 // verde 
 const Esmeraldas1 = new THREE.PointLight(0x1FFF00, 50, 4);
@@ -226,7 +224,9 @@ Esmeraldas2.position.set(-3, 2.5, -5.5);
 Esmeraldas2.castShadow = true
 scene.add(Esmeraldas2);
 
-// Puerta
+
+
+// Puerta principal
 // Naranja 
 const Puerta = new THREE.PointLight(0xFF4D00, 30, 3);
 Puerta.position.set(0, 0.5, 1.5);
@@ -238,12 +238,44 @@ Puerta1.position.set(0, 1.5, 1.5);
 Puerta1.castShadow = true
 scene.add(Puerta1);
 
-const geometry = new THREE.SphereGeometry(.1, 32, 32);
+const cartel = new THREE.PointLight(0xFF4D00, 30, 0.5);
+cartel.position.set(0.05, 0.3, 2);
+cartel.castShadow = true
+scene.add(cartel);
+
+// Puerta Trasera
+// azul 
+
+const Trasera1 = new THREE.PointLight(0x00C5FF, 100, 4);
+Trasera1.position.set(3, 1.5, -4);
+Trasera1.castShadow = true
+scene.add(Trasera1);
+
+
+const OVNI = new THREE.PointLight(0x1FFF00, 30, 3);
+OVNI.position.set(3.2, .5, 0);
+OVNI.castShadow = true
+scene.add(OVNI);
+
+const OVNI2 = new THREE.PointLight(0xAA00FF, 30, 3);
+OVNI2.position.set(3.2, 2.5, 0);
+OVNI2.castShadow = false
+scene.add(OVNI2);
+
+/*
+const Trasera2 = new THREE.PointLight(0x1FFF00, 50, 4);
+Trasera2.position.set(3.5, 1.5, 0);
+Trasera2.castShadow = false
+scene.add(Trasera2);
+*/
+
+/*
+const geometry = new THREE.SphereGeometry(.1, 30, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const sphere = new THREE.Mesh(geometry, material);
-sphere.position.set(0, 1, 1.5);
+sphere.position.set(0.05, 0.3, 2);
 scene.add(sphere);
-
+*/
 
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
 // Crear el skybox con texturas
