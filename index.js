@@ -158,8 +158,21 @@ giroscopio.castShadow = true
 scene.add(giroscopio);
 
 
-
 // Luces del Arbol
+// Rojo
+const ArbolPointLight0 = new THREE.PointLight(0xFF0404, 100, 2);
+ArbolPointLight0.position.set(-3, 3, 3);
+ArbolPointLight0.castShadow = true
+scene.add(ArbolPointLight0);
+
+
+// Naranja
+const ArbolPointLight5 = new THREE.PointLight(0xFF7100, 30, 2);
+ArbolPointLight5.position.set(-1.5, 2.1, 2.5);
+ArbolPointLight5.castShadow = true
+scene.add(ArbolPointLight5);
+
+
 // Verde
 const ArbolPointLight1 = new THREE.PointLight(0x00FF17, 100, 3);
 ArbolPointLight1.position.set(-3, 3, 0);
@@ -167,8 +180,8 @@ ArbolPointLight1.castShadow = true
 scene.add(ArbolPointLight1);
 
 
-// Naranja
-const ArbolPointLight2 = new THREE.PointLight(0xFF4D00, 100, 3);
+// Azul
+const ArbolPointLight2 = new THREE.PointLight(0x00C5FF, 100, 3);
 ArbolPointLight2.position.set(-3.5, 3.3, 0);
 ArbolPointLight2.castShadow = true
 scene.add(ArbolPointLight2);
@@ -181,7 +194,7 @@ scene.add(ArbolPointLight3);
 
 // Azul
 const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
-ArbolPointLight4.position.set(-2.2, 1.5, 2);
+ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
 ArbolPointLight4.castShadow = true
 scene.add(ArbolPointLight4);
 
@@ -199,12 +212,6 @@ Farol2.castShadow = true
 scene.add(Farol2);
 
 
-const geometry = new THREE.SphereGeometry(.1, 32, 32);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const sphere = new THREE.Mesh(geometry, material);
-sphere.position.set(-2.8, 1, -2.9);
-scene.add(sphere);
-
 
 
 // Esmeraldas
@@ -219,6 +226,23 @@ Esmeraldas2.position.set(-3, 2.5, -5.5);
 Esmeraldas2.castShadow = true
 scene.add(Esmeraldas2);
 
+// Puerta
+// Naranja 
+const Puerta = new THREE.PointLight(0xFF4D00, 30, 3);
+Puerta.position.set(0, 0.5, 1.5);
+Puerta.castShadow = true
+scene.add(Puerta);
+
+const Puerta1 = new THREE.PointLight(0x0087FF, 30, 3);
+Puerta1.position.set(0, 1.5, 1.5);
+Puerta1.castShadow = true
+scene.add(Puerta1);
+
+const geometry = new THREE.SphereGeometry(.1, 32, 32);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const sphere = new THREE.Mesh(geometry, material);
+sphere.position.set(0, 1, 1.5);
+scene.add(sphere);
 
 
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
@@ -246,10 +270,9 @@ const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerH
 
 
 const positions = [
-    { x: 5, y: 1.5, z: 5 },
-    { x: -5, y: 1.5, z: 5 },
-    { x: -5, y: 1.5, z: -5 },
-    { x: 5, y: 1.5, z: -5 },
+    { x: 5, y: 1.5, z: 0 },
+    { x: 0, y: 1.5, z: 5 },
+    { x: -5, y: 1.5, z: 0 },
     { x: 0, y: 1.5, z: -5 }
   ];
   
