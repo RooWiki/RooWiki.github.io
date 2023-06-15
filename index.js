@@ -97,22 +97,30 @@ loader.load('assets/giro3.glb', function(glb){
 let rotationSpeed = 0.03
 
 
-                                                        //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡.___// Iluminacion general de la escena                                     
+// Iluminacion general de la escena                                     
+
+/*                                                      
 const light = new THREE.DirectionalLight(0x8365FF, 1)
 light.position.set(5, 2,5)
 light.castShadow = true
 scene.add(light)   
+*/
 
 const light3 = new THREE.DirectionalLight(0xCD30FF, 1)
 light3.position.set(-5, 2,4)
 light3.castShadow = true
 scene.add(light3)
-/*
+
+//Pausa
+
 const light4 = new THREE.DirectionalLight(0xFAEAFF, 1)
 light4.position.set(-5, 2,-4)
 light4.castShadow = true
 scene.add(light4)
-*/
+
+
+//Luz muy fuerte blanca
+/*
 const ambientLight = new THREE.AmbientLight(0x3200FF, 0.3);
 scene.add(ambientLight);
 
@@ -130,7 +138,9 @@ const pointLight1 = new THREE.PointLight(0x13FF00, 5, 5, 1);
 pointLight1.position.set(3, 3, -3);
 pointLight1.castShadow = true
 scene.add(pointLight1);
+/*
 
+//Pausa
 /*
 const spotLight = new THREE.SpotLight(0xFF8C20, 10, 0, 0.5, 3, 3);
 spotLight.position.set(0, 5, 0);
@@ -140,18 +150,74 @@ scene.add(spotLight);
 scene.add(spotLight.target);
 */
 
+// Luz giroscopio
+
+const giroscopio = new THREE.PointLight(0xFFF300, 500, 3);
+giroscopio.position.set(0, 5, 0);
+giroscopio.castShadow = true
+scene.add(giroscopio);
+
+
 
 // Luces del Arbol
-
+// Verde
 const ArbolPointLight1 = new THREE.PointLight(0x00FF17, 100, 3);
 ArbolPointLight1.position.set(-3, 3, 0);
 ArbolPointLight1.castShadow = true
 scene.add(ArbolPointLight1);
 
 
+// Naranja
+const ArbolPointLight2 = new THREE.PointLight(0xFF4D00, 100, 3);
+ArbolPointLight2.position.set(-3.5, 3.3, 0);
+ArbolPointLight2.castShadow = true
+scene.add(ArbolPointLight2);
+
+// Naranja
+const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 100, 3);
+ArbolPointLight3.position.set(-2.2, 2.3, 0);
+ArbolPointLight3.castShadow = true
+scene.add(ArbolPointLight3);
+
+// Azul
+const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
+ArbolPointLight4.position.set(-2.2, 1.5, 2);
+ArbolPointLight4.castShadow = true
+scene.add(ArbolPointLight4);
+
+// Farol
+
+// Naranja
+const Farol1 = new THREE.PointLight(0xFF4D00, 50, 2);
+Farol1.position.set(-2.8, 1, -2.9);
+Farol1.castShadow = true
+scene.add(Farol1);
+
+const Farol2 = new THREE.PointLight(0xFF4D00, 50, 3);
+Farol2.position.set(-2, 1, -2);
+Farol2.castShadow = true
+scene.add(Farol2);
+
+
+const geometry = new THREE.SphereGeometry(.1, 32, 32);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const sphere = new THREE.Mesh(geometry, material);
+sphere.position.set(-2.8, 1, -2.9);
+scene.add(sphere);
 
 
 
+// Esmeraldas
+// verde 
+const Esmeraldas1 = new THREE.PointLight(0x1FFF00, 50, 4);
+Esmeraldas1.position.set(-3, 2.5, -3.5);
+Esmeraldas1.castShadow = true
+scene.add(Esmeraldas1);
+// verde 
+const Esmeraldas2 = new THREE.PointLight(0xC5FF00, 50, 2);
+Esmeraldas2.position.set(-3, 2.5, -5.5);
+Esmeraldas2.castShadow = true
+scene.add(Esmeraldas2);
 
 
 
