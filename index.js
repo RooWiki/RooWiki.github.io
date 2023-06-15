@@ -102,8 +102,6 @@ let rotationSpeed = 0.03
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight)
 
-//Pausa
-
 // Luz giroscopio
 
 const giroscopio = new THREE.PointLight(0xFFF300, 100, 2);
@@ -170,7 +168,7 @@ scene.add(Esmeraldas1);
 // Naranja 
 const Puerta = new THREE.PointLight(0xFF4D00, 30, 3);
 Puerta.position.set(0, 0.5, 1.5);
-Puerta.castShadow = true
+Puerta.castShadow = false
 scene.add(Puerta);
 
 const Puerta1 = new THREE.PointLight(0x0087FF, 30, 3);
@@ -190,9 +188,9 @@ Trasera1.position.set(3, 1.5, -4);
 Trasera1.castShadow = false
 scene.add(Trasera1);
 
-const OVNI = new THREE.PointLight(0x1FFF00, 30, 3);
-OVNI.position.set(3.2, .5, 0);
-OVNI.castShadow = true
+const OVNI = new THREE.PointLight(0x1FFF00, 30, 5);
+OVNI.position.set(4.5, 1.5, 4.5);
+OVNI.castShadow = false
 scene.add(OVNI);
 
 const OVNI2 = new THREE.PointLight(0xAA00FF, 30, 3);
@@ -232,10 +230,10 @@ const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerH
 
 
 const positions = [
-    { x: 5, y: 1.5, z: 0 },
     { x: 0, y: 1.5, z: 5 },
-    { x: -5, y: 1.5, z: 0 },
-    { x: 0, y: 1.5, z: -5 }
+    { x: -5, y: 1, z: -1.5 },
+    { x: 0, y: 1.5, z: -3 },
+    { x: 5, y: 1.5, z: 0 }
   ];
   
   let clickCount = 0; // Contador de clics
