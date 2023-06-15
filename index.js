@@ -140,13 +140,7 @@ const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
 ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
 ArbolPointLight4.castShadow = false
 scene.add(ArbolPointLight4);
-/*
-const geometry6 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
-const material6 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
-const sphere6 = new THREE.Mesh(geometry6, material6);
-sphere6.position.set(-2.8, 1.1, 1.5)
-scene.add(sphere6);
-*/
+
 
 // Farol
 // Naranja
@@ -198,12 +192,16 @@ OVNI2.position.set(3.2, 2.5, 0);
 OVNI2.castShadow = false
 scene.add(OVNI2);
 
-/*
-const Trasera2 = new THREE.PointLight(0x1FFF00, 50, 4);
-Trasera2.position.set(3.5, 1.5, 0);
-Trasera2.castShadow = false
-scene.add(Trasera2);
-*/
+const luna = new THREE.PointLight(0xFF4D00, 80, 40);
+luna.position.set(-30, 25, -40);
+luna.castShadow = false
+scene.add(luna);
+
+const geometry6 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
+const material6 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
+const sphere6 = new THREE.Mesh(geometry6, material6);
+sphere6.position.set(-30, 25, -40)
+scene.add(sphere6);
 
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
 // Crear el skybox con texturas
@@ -233,7 +231,7 @@ const positions = [
     { x: 0, y: 1.5, z: 5 },
     { x: -5, y: 1, z: -1.5 },
     { x: 0, y: 1.5, z: -3 },
-    { x: 5, y: 1.5, z: 0 }
+    { x: 5, y: 1, z: 0 }
   ];
   
   let clickCount = 0; // Contador de clics
