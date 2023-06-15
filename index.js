@@ -106,56 +106,52 @@ scene.add(ambientLight)
 
 // Luz giroscopio
 
-const giroscopio = new THREE.PointLight(0xFFF300, 500, 3);
+const giroscopio = new THREE.PointLight(0xFFF300, 100, 2);
 giroscopio.position.set(0, 4, 0);
 giroscopio.castShadow = false
 scene.add(giroscopio);
 
 
 // Luces del Arbol
-// Rojo
-const ArbolPointLight0 = new THREE.PointLight(0xFF0404, 100, 2);
-ArbolPointLight0.position.set(-3, 3, 3);
-ArbolPointLight0.castShadow = false
-scene.add(ArbolPointLight0);
-
-
 // Naranja
 const ArbolPointLight5 = new THREE.PointLight(0xFF7100, 30, 2);
 ArbolPointLight5.position.set(-1.5, 2.1, 2.5);
 ArbolPointLight5.castShadow = false
 scene.add(ArbolPointLight5);
-
-
-// Verde
-const ArbolPointLight1 = new THREE.PointLight(0x00FF17, 100, 3);
-ArbolPointLight1.position.set(-3, 3, 0);
-ArbolPointLight1.castShadow = false
-scene.add(ArbolPointLight1);
-
-
-// Azul
-const ArbolPointLight2 = new THREE.PointLight(0x00C5FF, 100, 3);
-ArbolPointLight2.position.set(-3.5, 3.3, 0);
-ArbolPointLight2.castShadow = false
-scene.add(ArbolPointLight2);
-
+/*
+const geometry2 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
+const material2 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
+const sphere2 = new THREE.Mesh(geometry2, material2);
+sphere2.position.set(-1.5, 2.1, 2.5)
+scene.add(sphere2);
+*/
 // Naranja
 const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 100, 3);
 ArbolPointLight3.position.set(-2.2, 2.3, 0);
 ArbolPointLight3.castShadow = false
 scene.add(ArbolPointLight3);
-
+/*
+const geometry5 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
+const material5 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
+const sphere5 = new THREE.Mesh(geometry5, material5);
+sphere5.position.set(-2.2, 2.3, 0)
+scene.add(sphere5);
+*/
 // Azul
 const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
 ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
 ArbolPointLight4.castShadow = false
 scene.add(ArbolPointLight4);
+/*
+const geometry6 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
+const material6 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
+const sphere6 = new THREE.Mesh(geometry6, material6);
+sphere6.position.set(-2.8, 1.1, 1.5)
+scene.add(sphere6);
+*/
 
 // Farol
-
 // Naranja
-
 const Farol2 = new THREE.PointLight(0xFF4D00, 50, 3);
 Farol2.position.set(-2, 1, -2);
 Farol2.castShadow = false
@@ -169,12 +165,6 @@ Esmeraldas1.position.set(-3, 2.5, -3.5);
 Esmeraldas1.castShadow = false 
 scene.add(Esmeraldas1);
 // verde 
-const Esmeraldas2 = new THREE.PointLight(0xC5FF00, 50, 2);
-Esmeraldas2.position.set(-3, 2.5, -5.5);
-Esmeraldas2.castShadow = false
-scene.add(Esmeraldas2);
-
-
 
 // Puerta principal
 // Naranja 
@@ -195,7 +185,6 @@ scene.add(cartel);
 
 // Puerta Trasera
 // azul 
-
 const Trasera1 = new THREE.PointLight(0x00C5FF, 100, 4);
 Trasera1.position.set(3, 1.5, -4);
 Trasera1.castShadow = false
@@ -216,14 +205,6 @@ const Trasera2 = new THREE.PointLight(0x1FFF00, 50, 4);
 Trasera2.position.set(3.5, 1.5, 0);
 Trasera2.castShadow = false
 scene.add(Trasera2);
-*/
-
-/*
-const geometry = new THREE.SphereGeometry(.1, 30, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const sphere = new THREE.Mesh(geometry, material);
-sphere.position.set(0.05, 0.3, 2);
-scene.add(sphere);
 */
 
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
