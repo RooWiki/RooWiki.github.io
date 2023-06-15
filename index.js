@@ -99,56 +99,10 @@ let rotationSpeed = 0.03
 
 // Iluminacion general de la escena                                     
 
-/*                                                      
-const light = new THREE.DirectionalLight(0x8365FF, 1)
-light.position.set(5, 2,5)
-light.castShadow = true
-scene.add(light)   
-*/
-
-const light3 = new THREE.DirectionalLight(0xCD30FF, 1)
-light3.position.set(-5, 2,4)
-light3.castShadow = true
-scene.add(light3)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight)
 
 //Pausa
-
-const light4 = new THREE.DirectionalLight(0xFAEAFF, 1)
-light4.position.set(-5, 2,-4)
-light4.castShadow = true
-scene.add(light4)
-
-
-//Luz muy fuerte blanca
-/*
-const ambientLight = new THREE.AmbientLight(0x3200FF, 0.3);
-scene.add(ambientLight);
-
-
-const ambientLight1 = new THREE.AmbientLight(0xFFFFFF, 0.3);
-scene.add(ambientLight1);
-
-
-const pointLight = new THREE.PointLight(0xE001FF, 5, 5, 1);
-pointLight.position.set(3, 3, 3);
-pointLight.castShadow = true
-scene.add(pointLight);
-
-const pointLight1 = new THREE.PointLight(0x13FF00, 5, 5, 1);
-pointLight1.position.set(3, 3, -3);
-pointLight1.castShadow = true
-scene.add(pointLight1);
-/*
-
-//Pausa
-/*
-const spotLight = new THREE.SpotLight(0xFF8C20, 10, 0, 0.5, 3, 3);
-spotLight.position.set(0, 5, 0);
-spotLight.target.position.set(0, 0, 0);
-spotLight.castShadow = true
-scene.add(spotLight);
-scene.add(spotLight.target);
-*/
 
 // Luz giroscopio
 
@@ -201,27 +155,23 @@ scene.add(ArbolPointLight4);
 // Farol
 
 // Naranja
-const Farol1 = new THREE.PointLight(0xFF4D00, 50, 2);
-Farol1.position.set(-2.8, 1, -2.9);
-Farol1.castShadow = true
-scene.add(Farol1);
 
 const Farol2 = new THREE.PointLight(0xFF4D00, 50, 3);
 Farol2.position.set(-2, 1, -2);
-Farol2.castShadow = true
+Farol2.castShadow = false
 scene.add(Farol2);
 
 
 // Esmeraldas
 // verde 
-const Esmeraldas1 = new THREE.PointLight(0x1FFF00, 50, 4);
+const Esmeraldas1 = new THREE.PointLight(0x1FFF00, 50, 2);
 Esmeraldas1.position.set(-3, 2.5, -3.5);
-Esmeraldas1.castShadow = true
+Esmeraldas1.castShadow = false 
 scene.add(Esmeraldas1);
 // verde 
 const Esmeraldas2 = new THREE.PointLight(0xC5FF00, 50, 2);
 Esmeraldas2.position.set(-3, 2.5, -5.5);
-Esmeraldas2.castShadow = true
+Esmeraldas2.castShadow = false
 scene.add(Esmeraldas2);
 
 
@@ -235,12 +185,12 @@ scene.add(Puerta);
 
 const Puerta1 = new THREE.PointLight(0x0087FF, 30, 3);
 Puerta1.position.set(0, 1.5, 1.5);
-Puerta1.castShadow = true
+Puerta1.castShadow = false 
 scene.add(Puerta1);
 
 const cartel = new THREE.PointLight(0xFF4D00, 30, 0.5);
 cartel.position.set(0.05, 0.3, 2);
-cartel.castShadow = true
+cartel.castShadow = false
 scene.add(cartel);
 
 // Puerta Trasera
@@ -248,9 +198,8 @@ scene.add(cartel);
 
 const Trasera1 = new THREE.PointLight(0x00C5FF, 100, 4);
 Trasera1.position.set(3, 1.5, -4);
-Trasera1.castShadow = true
+Trasera1.castShadow = false
 scene.add(Trasera1);
-
 
 const OVNI = new THREE.PointLight(0x1FFF00, 30, 3);
 OVNI.position.set(3.2, .5, 0);
