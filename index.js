@@ -42,8 +42,6 @@ loader.load('assets/giro1.glb', function(glb){
     const giro1 = glb.scene;
     giro11 = glb.scene;
 
-    // Posicion y escala del objeto importado
-    //scene.position.set(0,0,0)
     giro1.position.set(0, 4, 0)
     giro1.scale.set(0.1, 0.1, 0.1)
     
@@ -60,13 +58,10 @@ loader.load('assets/giro1.glb', function(glb){
 loader.load('assets/giro2.glb', function(glb){
     const giro2 = glb.scene;
     giro22 = glb.scene;
-
-    // Posicion y escala del objeto importado
     
     giro2.position.set(0, 4, 0)
     giro2.scale.set(0.1, 0.1, 0.1)
     
-    //Sombras del Objeto Importado
     giro2.traverse(function(node){
         if(node.isMesh)
             node.castShadow = true;
@@ -80,11 +75,9 @@ loader.load('assets/giro3.glb', function(glb){
     const giro3 = glb.scene;
     giro33 = glb.scene;
 
-    // Posicion y escala del objeto importado
     giro3.position.set(0, 4, 0)
     giro3.scale.set(0.1, 0.1, 0.1)
     
-    //Sombras del Objeto Importado
     giro3.traverse(function(node){
         if(node.isMesh)
             node.castShadow = true;
@@ -93,12 +86,11 @@ loader.load('assets/giro3.glb', function(glb){
 
       scene.add(giro3);
 })
-
 let rotationSpeed = 0.03
 
 
-// Iluminacion general de la escena                                     
-
+// Iluminacion general de la escena
+                                    
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight)
 
@@ -116,27 +108,15 @@ const ArbolPointLight5 = new THREE.PointLight(0xFF7100, 30, 2);
 ArbolPointLight5.position.set(-1.5, 2.1, 2.5);
 ArbolPointLight5.castShadow = false
 scene.add(ArbolPointLight5);
-/*
-const geometry2 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
-const material2 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
-const sphere2 = new THREE.Mesh(geometry2, material2);
-sphere2.position.set(-1.5, 2.1, 2.5)
-scene.add(sphere2);
-*/
+
 // Naranja
-const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 100, 3);
+const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 50, 3);
 ArbolPointLight3.position.set(-2.2, 2.3, 0);
 ArbolPointLight3.castShadow = false
 scene.add(ArbolPointLight3);
-/*
-const geometry5 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
-const material5 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
-const sphere5 = new THREE.Mesh(geometry5, material5);
-sphere5.position.set(-2.2, 2.3, 0)
-scene.add(sphere5);
-*/
+
 // Azul
-const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 100, 2);
+const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 30, 3);
 ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
 ArbolPointLight4.castShadow = false
 scene.add(ArbolPointLight4);
@@ -160,12 +140,12 @@ scene.add(Esmeraldas1);
 
 // Puerta principal
 // Naranja 
-const Puerta = new THREE.PointLight(0xFF4D00, 30, 3);
+const Puerta = new THREE.PointLight(0xFF4D00, 30, 4);
 Puerta.position.set(0, 0.5, 1.5);
 Puerta.castShadow = false
 scene.add(Puerta);
 
-const Puerta1 = new THREE.PointLight(0x0087FF, 30, 3);
+const Puerta1 = new THREE.PointLight(0x0087FF, 30, 2);
 Puerta1.position.set(0, 1.5, 1.5);
 Puerta1.castShadow = false 
 scene.add(Puerta1);
@@ -192,16 +172,13 @@ OVNI2.position.set(3.2, 2.5, 0);
 OVNI2.castShadow = false
 scene.add(OVNI2);
 
-const luna = new THREE.PointLight(0xFF4D00, 80, 40);
+// Luna
+
+const luna = new THREE.PointLight(0x1FFF00, 100, 40);
 luna.position.set(-30, 25, -40);
 luna.castShadow = false
 scene.add(luna);
 
-const geometry6 = new THREE.SphereGeometry(1, 32, 32); // Radio, segmentos horizontales, segmentos verticales
-const material6 = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Color verde
-const sphere6 = new THREE.Mesh(geometry6, material6);
-sphere6.position.set(-30, 25, -40)
-scene.add(sphere6);
 
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
 // Crear el skybox con texturas
@@ -230,7 +207,7 @@ const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerH
 const positions = [
     { x: 0, y: 1.5, z: 5 },
     { x: -5, y: 1, z: -1.5 },
-    { x: 0, y: 1.5, z: -3 },
+    { x: 0, y: 1, z: -3 },
     { x: 5, y: 1, z: 0 }
   ];
   
@@ -292,6 +269,62 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
+/////////////////////////////////////////////////////
+// Variables para el movimiento de la cámara
+let isDragging = false;
+let previousMousePosition = {
+  x: 0,
+  y: 0
+};
+
+// Función para manejar el evento mousemove
+function handleMouseMove(event) {
+  if (!isDragging) return;
+  console.log('!!!!!!!!!!!!!');
+  // Obtener la posición actual del mouse
+  const deltaMove = {
+    x: event.clientX - previousMousePosition.x,
+    y: event.clientY - previousMousePosition.y
+  };
+
+  // Calcular la rotación en base al movimiento del mouse
+  const deltaRotationQuaternion = new THREE.Quaternion()
+    .setFromEuler(
+      new THREE.Euler(
+        toRadians(deltaMove.y * 1),
+        toRadians(deltaMove.x * 1),
+        0,
+        'XYZ'
+        
+      )
+    );
+
+  // Aplicar la rotación a la cámara
+  camera.quaternion.multiplyQuaternions(deltaRotationQuaternion, camera.quaternion);
+
+  // Actualizar la posición del mouse para el siguiente movimiento
+  previousMousePosition = {
+    x: event.clientX,
+    y: event.clientY
+  };
+}
+
+// Función para convertir grados a radianes
+function toRadians(degrees) {
+  return degrees * Math.PI / 180;
+}
+
+// Añadir el evento mousemove al documento
+document.addEventListener('mousemove', handleMouseMove);
+
+// Añadir los eventos mousedown y mouseup para el arrastre del mouse
+document.addEventListener('mousedown', () => {
+  isDragging = true;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
 ////////////////////////////////////////////////////// Función de manejo del evento de clic en el lienzo
 
 
