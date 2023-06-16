@@ -1,66 +1,106 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
 /* Estilos para la imagen */
 .image {
-  position: fixed;
-  padding: 10px;
-  bottom: 0;
-  left: 0;
-  transform: translate(0, 0);
- /* Ajusta el tamaño de la imagen según tus necesidades */
-  height: 20%;
+	position: fixed;
+	padding: 10px;
+	bottom: 0;
+	left: 0;
+	transform: translate(0, 0);
+	/* Ajusta el tamaño de la imagen según tus necesidades */
+	height: 20%;
 }
-/* Estilos para los botones */
 
+/* Estilos para los botones */
 .button:hover {
-  background-color: rgba(128, 128, 128, 0.1);
+	background-color: rgba(128, 128, 128, 0.1);
 }
 
 .button:active {
-  background-color: rgba(128, 128, 128, 0.2);
+	background-color: rgba(128, 128, 128, 0.2);
 }
+
 .button {
-  background-color: transparent;
-  color: white;
-  border: none;
-  padding: 30px 30px; /* Ajusta el tamaño del padding para aumentar el tamaño del botón */
-  font-size: 20px; /* Ajusta el tamaño del texto en los botones */
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-weight: bold;
-  text-shadow: 2px 2px 2px black; /* Añade una sombra de texto negra */
-  margin-right: 10px; /* Añadimos un margen derecho para separar los botones */
+	background-color: transparent;
+	color: white;
+	border: none;
+	padding: 30px 30px;
+	/* Ajusta el tamaño del padding para aumentar el tamaño del botón */
+	font-size: 20px;
+	/* Ajusta el tamaño del texto en los botones */
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 10px;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px black;
+	/* Añade una sombra de texto negra */
+	margin-right: 10px;
+	/* Añadimos un margen derecho para separar los botones */
 }
 
 /* Estilos para el contenedor de los botones */
 .button-container {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  flex-direction: row; /* Cambiamos la dirección del flujo a fila */
-  flex-wrap: wrap; /* Permitimos que los botones hagan un salto de línea */
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	flex-direction: row;
+	/* Cambiamos la dirección del flujo a fila */
+	flex-wrap: wrap;
+	/* Permitimos que los botones hagan un salto de línea */
 }
 
 body,
 html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100%;
 }
 
 .webgl {
-  display: block;
-  width: 100%;
-  height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+body.vertical {
+	position: relative;
+}
+
+.black-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.98);
+	z-index: 9999;
+}
+
+/* Estilos para el contenedor del GIF */
+.gif-container {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(40%);
+	z-index: 10000;
+}
+
+/* Estilos para el mensaje en inglés */
+.rotate-message {
+	position: fixed;
+	top: 10%;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	font-weight: bold;
+	z-index: 10001;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+	font-family: Arial, sans-serif;
 }
