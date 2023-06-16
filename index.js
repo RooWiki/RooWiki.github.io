@@ -207,7 +207,7 @@ const sizes = {
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l
 // Camara
 const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
-camera.position.set(3,3,3)
+camera.position.set(-2,0.5,3)
 
 const positions = [
     { x: 0, y: 1.5, z: 5 },
