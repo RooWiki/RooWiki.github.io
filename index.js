@@ -10,13 +10,6 @@ const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
 const button3 = document.getElementById('button3');
 const button4 = document.getElementById('button4');
-//button1.className = "button";
-//button1.innerText = "Botón 1";
-
-//const renderer = new THREE.WebGL1Renderer({antialias: true})
-//renderer.shadowMap.enabled = true;
-
-// Importar Objeto con fromato glb
 const loader = new GLTFLoader();
 
 
@@ -152,11 +145,6 @@ const Puerta = new THREE.PointLight(0x00C5FF, 30, 1);
 Puerta.position.set(0, 1, 1.5);
 Puerta.castShadow = false
 scene.add(Puerta);
-/*
-const Puerta1 = new THREE.PointLight(0x0087FF, 5, 2);
-Puerta1.position.set(0, 1.5, 1.5);
-Puerta1.castShadow = false 
-scene.add(Puerta1);*/
 
 const cartel = new THREE.PointLight(0xFF4D00, 10, 10);
 cartel.position.set(0, 0.3, 2);
@@ -187,8 +175,6 @@ luna.position.set(-30, 25, -40);
 luna.castShadow = false
 scene.add(luna);
 
-
-//__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡. // Sky Box
 // Crear el skybox con texturas
 const loaderskybox = new THREE.CubeTextureLoader();
 const texture = loaderskybox.load([
@@ -201,13 +187,10 @@ const texture = loaderskybox.load([
 ]);
 scene.background = texture;
 
-//__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l // Tamaño de la escena
 const sizes = {
    width: window.innerWidth,
    height: window.innerHeight
 }
-
-//__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l
 // Camara
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(2, 2.5, 7)
@@ -290,16 +273,6 @@ function animateCamera() {
       animateCamera();
    }
 }
-/* Si le das click a la escena, se mueve la camara
-function handleClick() {
-  animateCamera();
-}*/
-
-// Asignar el controlador de eventos al hacer clic en el lienzo
-//canvas.addEventListener('click', handleClick, false);
-
-// Variables para controlar la rotación de la cámara
-
 
 scene.add(camera);
 
@@ -326,106 +299,6 @@ function onWindowResize() {
    renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-/////////////////////////////////////////////////////
-/*
-let rotationSpeedX = 0;
-let rotationSpeedY = 0;
-
-let isDragging = false;
-let previousMousePosition = {
-  x: 0,
-  y: 0
-};
-
-// Variables para controlar la posición de la cámara
-let cameraRadius = 10;
-let cameraTheta = 0;
-let cameraPhi = Math.PI / 4;
-
-// Función para actualizar la posición y orientación de la cámara
-function updateCameraPosition() {
-  camera.position.x = cameraRadius * Math.sin(cameraTheta) * Math.cos(cameraPhi);
-  camera.position.y = cameraRadius * Math.sin(cameraPhi);
-  camera.position.z = cameraRadius * Math.cos(cameraTheta) * Math.cos(cameraPhi);
-
-  camera.lookAt(scene.position);
-}
-// Función para controlar el evento de clic del mouse
-function onMouseDown(event) {
-  // Verificar si el botón izquierdo del mouse fue presionado
-  if (event.button === 0) {
-    isDragging = true;
-    previousMousePosition = {
-      x: event.clientX,
-      y: event.clientY
-    };
-    
-  }
-  console.log('Arrastre');
-}
-
-// Función para controlar el evento de liberación del mouse
-function onMouseUp(event) {
-  // Verificar si el botón izquierdo del mouse fue liberado
-  if (event.button === 0) {
-    isDragging = false;
-  }
-}
-/*
-// Función para controlar el evento de movimiento del mouse
-//function handleClick()
-function onMouseMove(event) {
-  // Obtener la diferencia de posición del mouse en X y Y
-  const deltaX = event.movementX;
-  const deltaY = event.movementY;
-
-  // Ajustar la velocidad de rotación en función de la diferencia del mouse
-  rotationSpeedX = deltaX * 0.01;
-  rotationSpeedY = deltaY * 0.01;
-}
-*/
-/*
-// Función para controlar el evento de tecla presionada
-function onKeyDown(event) {
-  switch (event.keyCode) {
-    case 37: // Flecha izquierda
-      rotationSpeedX = -0.02;
-      console.log('Arrastre');
-      break;
-    case 39: // Flecha derecha
-      rotationSpeedX = 0.02;
-      break;
-    case 38: // Flecha arriba
-      rotationSpeedY = 0.02;
-      break;
-    case 40: // Flecha abajo
-      rotationSpeedY = -0.02;
-      break;
-  }
-}
-
-// Función para controlar el evento de tecla liberada
-function onKeyUp(event) {
-  switch (event.keyCode) {
-    case 37: // Flecha izquierda
-    case 39: // Flecha derecha
-      rotationSpeedX = 0;
-      break;
-    case 38: // Flecha arriba
-    case 40: // Flecha abajo
-      rotationSpeedY = 0;
-      break;
-  }
-}
-
-// Agregar los controladores de eventos
-window.addEventListener('mousedown', onMouseDown, false);
-window.addEventListener('mouseup', onMouseUp, false);
-//window.addEventListener('mousemove', onMouseMove, false);
-window.addEventListener('keydown', onKeyDown, false);
-window.addEventListener('keyup', onKeyUp, false);
-
-*/
 ////////////////////////////////////////////////////// Función de manejo del evento de clic en el lienzo
 rotationSpeed
 
@@ -435,12 +308,6 @@ function animate() {
       //createCameraAnimations();
    }
    TWEEN.update();
-
-   // Agrega un event listener al elemento del lienzo de renderizado
-   //cameraTheta += rotationSpeedX;
-   //cameraPhi += rotationSpeedY;
-   //updateCameraPosition();
-
 
    if (giro11) giro11.rotation.x += rotationSpeed;
    if (giro22) giro22.rotation.z += rotationSpeed;
