@@ -3,14 +3,19 @@ import {GLTFLoader} from './asd/three.js-master/examples/jsm/loaders/GLTFLoader.
 let giro11, giro22, giro33;
 const canvas = document.querySelector('.webgl')
 const scene = new THREE.Scene()
+const button1 = document.getElementById('button1');
+const button2 = document.getElementById('button2');
+const button3 = document.getElementById('button3');
+const button4 = document.getElementById('button4');
+//button1.className = "button";
+//button1.innerText = "Botón 1";
 
-const render = new THREE.WebGL1Renderer({antialias: true})
+//const renderer = new THREE.WebGL1Renderer({antialias: true})
 //renderer.shadowMap.enabled = true;
-
- 
 
 // Importar Objeto con fromato glb
 const loader = new GLTFLoader();
+
 
 loader.load('assets/logo.glb', function(glb){
     const root = glb.scene;
@@ -202,7 +207,7 @@ const sizes = {
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l
 // Camara
 const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
-
+camera.position.set(3,3,3)
 
 const positions = [
     { x: 0, y: 1.5, z: 5 },
@@ -212,6 +217,32 @@ const positions = [
   ];
   
   let clickCount = 0; // Contador de clics
+
+  
+  button1.addEventListener('click', () => {
+    clickCount = 0;
+    console.log('Se ha hecho clic en el botón 1. clickCount =', clickCount);
+    animateCamera() 
+  });
+  //document.body.appendChild(button1);
+
+  button2.addEventListener('click', () => {
+    clickCount = 1;
+    console.log('Se ha hecho clic en el botón 2. clickCount =', clickCount);
+    animateCamera() 
+  });
+
+  button3.addEventListener('click', () => {
+    clickCount = 2;
+    console.log('Se ha hecho clic en el botón 3. clickCount =', clickCount);
+    animateCamera() 
+  });
+
+  button4.addEventListener('click', () => {
+    clickCount = 3;
+    console.log('Se ha hecho clic en el botón 4. clickCount =', clickCount);
+    animateCamera() 
+  });
   
   function animateCamera() {
     if (clickCount < positions.length) {
@@ -232,13 +263,13 @@ const positions = [
       animateCamera();
     }
   }
-  
+  /* Si le das click a la escena, se mueve la camara
   function handleClick() {
     animateCamera();
-  }
+  }*/
   
   // Asignar el controlador de eventos al hacer clic en el lienzo
-  canvas.addEventListener('click', handleClick, false);
+  //canvas.addEventListener('click', handleClick, false);
 
 // Variables para controlar la rotación de la cámara
 
@@ -246,7 +277,6 @@ const positions = [
 scene.add(camera);
 
 
-//const renderer2 = new THREE.WebGL1Renderer({ antialias: true });  
 const renderer = new THREE.WebGL1Renderer({
 
     canvas: canvas
@@ -270,93 +300,137 @@ function onWindowResize() {
 }
 
 /////////////////////////////////////////////////////
-// Variables para el movimiento de la cámara
+/*
+let rotationSpeedX = 0;
+let rotationSpeedY = 0;
+
 let isDragging = false;
 let previousMousePosition = {
   x: 0,
   y: 0
 };
 
-// Función para manejar el evento mousemove
-function handleMouseMove(event) {
-  if (!isDragging) return;
-  console.log('!!!!!!!!!!!!!');
-  // Obtener la posición actual del mouse
-  const deltaMove = {
-    x: event.clientX - previousMousePosition.x,
-    y: event.clientY - previousMousePosition.y
-  };
+// Variables para controlar la posición de la cámara
+let cameraRadius = 10;
+let cameraTheta = 0;
+let cameraPhi = Math.PI / 4;
 
-  // Calcular la rotación en base al movimiento del mouse
-  const deltaRotationQuaternion = new THREE.Quaternion()
-    .setFromEuler(
-      new THREE.Euler(
-        toRadians(deltaMove.y * 1),
-        toRadians(deltaMove.x * 1),
-        0,
-        'XYZ'
-        
-      )
-    );
+// Función para actualizar la posición y orientación de la cámara
+function updateCameraPosition() {
+  camera.position.x = cameraRadius * Math.sin(cameraTheta) * Math.cos(cameraPhi);
+  camera.position.y = cameraRadius * Math.sin(cameraPhi);
+  camera.position.z = cameraRadius * Math.cos(cameraTheta) * Math.cos(cameraPhi);
 
-  // Aplicar la rotación a la cámara
-  camera.quaternion.multiplyQuaternions(deltaRotationQuaternion, camera.quaternion);
-
-  // Actualizar la posición del mouse para el siguiente movimiento
-  previousMousePosition = {
-    x: event.clientX,
-    y: event.clientY
-  };
+  camera.lookAt(scene.position);
+}
+// Función para controlar el evento de clic del mouse
+function onMouseDown(event) {
+  // Verificar si el botón izquierdo del mouse fue presionado
+  if (event.button === 0) {
+    isDragging = true;
+    previousMousePosition = {
+      x: event.clientX,
+      y: event.clientY
+    };
+    
+  }
+  console.log('Arrastre');
 }
 
-// Función para convertir grados a radianes
-function toRadians(degrees) {
-  return degrees * Math.PI / 180;
+// Función para controlar el evento de liberación del mouse
+function onMouseUp(event) {
+  // Verificar si el botón izquierdo del mouse fue liberado
+  if (event.button === 0) {
+    isDragging = false;
+  }
+}
+/*
+// Función para controlar el evento de movimiento del mouse
+//function handleClick()
+function onMouseMove(event) {
+  // Obtener la diferencia de posición del mouse en X y Y
+  const deltaX = event.movementX;
+  const deltaY = event.movementY;
+
+  // Ajustar la velocidad de rotación en función de la diferencia del mouse
+  rotationSpeedX = deltaX * 0.01;
+  rotationSpeedY = deltaY * 0.01;
+}
+*/
+/*
+// Función para controlar el evento de tecla presionada
+function onKeyDown(event) {
+  switch (event.keyCode) {
+    case 37: // Flecha izquierda
+      rotationSpeedX = -0.02;
+      console.log('Arrastre');
+      break;
+    case 39: // Flecha derecha
+      rotationSpeedX = 0.02;
+      break;
+    case 38: // Flecha arriba
+      rotationSpeedY = 0.02;
+      break;
+    case 40: // Flecha abajo
+      rotationSpeedY = -0.02;
+      break;
+  }
 }
 
-// Añadir el evento mousemove al documento
-document.addEventListener('mousemove', handleMouseMove);
+// Función para controlar el evento de tecla liberada
+function onKeyUp(event) {
+  switch (event.keyCode) {
+    case 37: // Flecha izquierda
+    case 39: // Flecha derecha
+      rotationSpeedX = 0;
+      break;
+    case 38: // Flecha arriba
+    case 40: // Flecha abajo
+      rotationSpeedY = 0;
+      break;
+  }
+}
 
-// Añadir los eventos mousedown y mouseup para el arrastre del mouse
-document.addEventListener('mousedown', () => {
-  isDragging = true;
-});
+// Agregar los controladores de eventos
+window.addEventListener('mousedown', onMouseDown, false);
+window.addEventListener('mouseup', onMouseUp, false);
+//window.addEventListener('mousemove', onMouseMove, false);
+window.addEventListener('keydown', onKeyDown, false);
+window.addEventListener('keyup', onKeyUp, false);
 
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-});
+*/
 ////////////////////////////////////////////////////// Función de manejo del evento de clic en el lienzo
-
+rotationSpeed 
 
 function animate(){
     // Actualizar los tweens en cada fotograma
-    
     function onCanvasClick(event) {
         //createCameraAnimations();
     }
-
-    
     TWEEN.update();
       
     // Agrega un event listener al elemento del lienzo de renderizado
-    renderer.domElement.addEventListener('click', onCanvasClick);
-    
+    //cameraTheta += rotationSpeedX;
+    //cameraPhi += rotationSpeedY;
+    //updateCameraPosition();
+  
 
     if (giro11) giro11.rotation.x += rotationSpeed;
     if (giro22) giro22.rotation.z += rotationSpeed;
     if (giro33) giro33.rotation.y += rotationSpeed;
-
+    
+    
     
         // Apuntar la camara
     camera.lookAt(0.0, 1, 0.0);
 
     renderer.shadowMap.enabled = true
     renderer.gammaOuput = true
-            
-    requestAnimationFrame(animate)
-    renderer.render(scene, camera)
+    renderer.domElement.addEventListener('click', onCanvasClick);
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
     }
-            
+//updateCameraPosition();
 animate()
 
 
