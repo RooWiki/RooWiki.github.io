@@ -50,6 +50,7 @@ body {
   flex-wrap: wrap; /* Permitimos que los botones hagan un salto de línea */
 }
 
+
 .button {
   background-color: transparent;
   color: white;
