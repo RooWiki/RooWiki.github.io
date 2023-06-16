@@ -1,13 +1,22 @@
 * {
-  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
-.elemento-especifico {
-  border: none;
+/* Estilos para la imagen */
+.image {
+  position: fixed;
+  padding: 10px 20px;
+  top: 100%;
+  left: 0;
+  transform: translate(0, -100%);
+  width: 20%; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: 20%;
 }
 
 /* Estilos para los botones */
@@ -38,20 +47,14 @@ body {
   top: 10px;
   right: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Cambiamos la dirección del flujo a fila */
 }
 
-/* Estilos para la imagen */
-.image {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
-  height: 200px;
-  background-image: url('assets/img/logo.png'); /* Reemplaza 'ruta-de-tu-imagen.png' con la ruta de tu imagen */
-  background-size: cover;
+.button {
+  margin-right: 10px; /* Añadimos un margen derecho para separar los botones */
 }
+/* Estilos para la imagen */
+
 
 body,
 html {
