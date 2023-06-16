@@ -8,53 +8,90 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
+        /* Estilos para el fondo negro en orientación vertical */
+        body.vertical {
+            position: relative;
+        }
+
+        .black-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            z-index: 9999;
+        }
+
+        /* Estilos para el contenedor del GIF */
         .gif-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    body.vertical {
-      background-color: black;
-    }
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+        }
+
+        /* Estilos para el mensaje en inglés */
+        .rotate-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 10001;
+        }
     </style>
 </head>
 <body>
-      <div class="gif-container" id="gifContainer">
-    <img src="assets/img/horizontal.gif" alt="Advertencia">
-  </div>
-    
-      <script>
+    <div class="gif-container" id="gifContainer">
+        <img src="assets/img/horizontal.gif" alt="Advertencia">
+    </div>
+
+    <div class="black-overlay" id="blackOverlay"></div>
+
+    <div class="rotate-message" id="rotateMessage">Rotate your device</div>
+
+    <script>
         // Función para mostrar u ocultar el mensaje dependiendo de la orientación
         function handleOrientationChange() {
-      var gifContainer = document.getElementById('gifContainer');
-      var body = document.body;
+            var gifContainer = document.getElementById('gifContainer');
+            var blackOverlay = document.getElementById('blackOverlay');
+            var rotateMessage = document.getElementById('rotateMessage');
+            var body = document.body;
 
-      if (window.orientation === 90 || window.orientation === -90) {
-        gifContainer.style.display = 'none'; // Orientación horizontal
-        body.classList.remove('vertical');
-      } else {
-        gifContainer.style.display = 'block'; // Orientación vertical
-        body.classList.add('vertical');
-      }
-    }
-    
+            if (window.orientation === 90 || window.orientation === -90) {
+                gifContainer.style.display = 'none'; // Orientación horizontal
+                blackOverlay.style.display = 'none'; // Ocultar fondo negro
+                rotateMessage.style.display = 'none'; // Ocultar mensaje
+                body.classList.remove('vertical');
+            } else {
+                gifContainer.style.display = 'block'; // Orientación vertical
+                blackOverlay.style.display = 'block'; // Mostrar fondo negro
+                rotateMessage.style.display = 'block'; // Mostrar mensaje
+                body.classList.add('vertical');
+            }
+        }
+
         // Agregar el evento de cambio de orientación
         window.addEventListener('orientationchange', handleOrientationChange);
-    
+
         // Ejecutar la función al cargar la página
         handleOrientationChange();
-      </script>
+    </script>
+
     <canvas class="webgl"></canvas>
     <script type="module" src="index.js"></script>
     <script src="asd/tween.js-main/dist/tween.umd.js"></script>
-    
 
-    <div class="button-container">    
+    <div class="button-container">
         <button id="button1" class="button">Resume</button>
         <button id="button2" class="button">Education</button>
         <button id="button3" class="button">Skills</button>
-        <button id="button4" class="button">Exprerience</button>
+        <button id="button4" class="button">Experience</button>
     </div>
     <img class="image" src="assets/img/logoCV1.png" alt="Imagen" id="logoCV">
 </body>
