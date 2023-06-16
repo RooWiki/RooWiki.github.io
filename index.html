@@ -62,8 +62,9 @@
             var blackOverlay = document.getElementById('blackOverlay');
             var rotateMessage = document.getElementById('rotateMessage');
             var body = document.body;
-
-            if (window.orientation === 90 || window.orientation === -90) {
+            console.log(window.orientation);
+            if (window.orientation === 90 || window.orientation === -90 ||  window.orientation === undefined) {
+                console.log(window.orientation);
                 gifContainer.style.display = 'none'; // Orientación horizontal
                 blackOverlay.style.display = 'none'; // Ocultar fondo negro
                 rotateMessage.style.display = 'none'; // Ocultar mensaje

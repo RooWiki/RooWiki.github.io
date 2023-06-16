@@ -116,14 +116,14 @@ ArbolPointLight5.castShadow = false
 scene.add(ArbolPointLight5);
 
 // Naranja
-const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 50, 3);
+const ArbolPointLight3 = new THREE.PointLight(0xFF4D00, 20, 3);
 ArbolPointLight3.position.set(-2.2, 2.3, 0);
 ArbolPointLight3.castShadow = false
 scene.add(ArbolPointLight3);
 
 // Azul
-const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 30, 3);
-ArbolPointLight4.position.set(-2.8, 1.1, 1.5);
+const ArbolPointLight4 = new THREE.PointLight(0x00C5FF, 20, 3);
+ArbolPointLight4.position.set(-2.8, 2.1, 1.5);
 ArbolPointLight4.castShadow = false
 scene.add(ArbolPointLight4);
 
@@ -145,19 +145,19 @@ scene.add(Esmeraldas1);
 // verde 
 
 // Puerta principal
-// Naranja 
-const Puerta = new THREE.PointLight(0xFF4D00, 30, 4);
-Puerta.position.set(0, 0.5, 1.5);
+// Azul 
+const Puerta = new THREE.PointLight(0x00C5FF, 10, 1);
+Puerta.position.set(0, 1, 1.5);
 Puerta.castShadow = false
 scene.add(Puerta);
-
-const Puerta1 = new THREE.PointLight(0x0087FF, 30, 2);
+/*
+const Puerta1 = new THREE.PointLight(0x0087FF, 5, 2);
 Puerta1.position.set(0, 1.5, 1.5);
 Puerta1.castShadow = false 
-scene.add(Puerta1);
+scene.add(Puerta1);*/
 
-const cartel = new THREE.PointLight(0xFF4D00, 30, 0.5);
-cartel.position.set(0.05, 0.3, 2);
+const cartel = new THREE.PointLight(0xFF4D00, 10, 10);
+cartel.position.set(0, 0.3, 2);
 cartel.castShadow = false
 scene.add(cartel);
 
@@ -208,10 +208,10 @@ const sizes = {
                                                         //__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l
 // Camara
 const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
-camera.position.set(-2,0.5,3)
+camera.position.set(2,2.5,7)
 
 const positions = [
-    { x: -2, y: 0.5, z: 3 },
+    { x: 2, y: 2.5, z: 7 },
     { x: 0, y: 1.5, z: 5 },
     { x: -5, y: 1, z: -1.5 },
     { x: 0, y: 1, z: -3 },
