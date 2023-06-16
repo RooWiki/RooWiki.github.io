@@ -3,6 +3,7 @@ import {GLTFLoader} from './asd/three.js-master/examples/jsm/loaders/GLTFLoader.
 let giro11, giro22, giro33;
 const canvas = document.querySelector('.webgl')
 const scene = new THREE.Scene()
+const logoCV = document.getElementById('logoCV');
 const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
 const button3 = document.getElementById('button3');
@@ -210,6 +211,7 @@ const camera = new  THREE.PerspectiveCamera(75, window.innerWidth/ window.innerH
 camera.position.set(-2,0.5,3)
 
 const positions = [
+    { x: -2, y: 0.5, z: 3 },
     { x: 0, y: 1.5, z: 5 },
     { x: -5, y: 1, z: -1.5 },
     { x: 0, y: 1, z: -3 },
@@ -218,28 +220,32 @@ const positions = [
   
   let clickCount = 0; // Contador de clics
 
-  
-  button1.addEventListener('click', () => {
+  logoCV.addEventListener('click', () => {
     clickCount = 0;
+    console.log('Se ha hecho clic en el botón 0. clickCount =', clickCount);
+    animateCamera() 
+  });
+
+  button1.addEventListener('click', () => {
+    clickCount = 1;
     console.log('Se ha hecho clic en el botón 1. clickCount =', clickCount);
     animateCamera() 
   });
-  //document.body.appendChild(button1);
 
   button2.addEventListener('click', () => {
-    clickCount = 1;
+    clickCount = 2;
     console.log('Se ha hecho clic en el botón 2. clickCount =', clickCount);
     animateCamera() 
   });
 
   button3.addEventListener('click', () => {
-    clickCount = 2;
+    clickCount = 3;
     console.log('Se ha hecho clic en el botón 3. clickCount =', clickCount);
     animateCamera() 
   });
 
   button4.addEventListener('click', () => {
-    clickCount = 3;
+    clickCount = 4;
     console.log('Se ha hecho clic en el botón 4. clickCount =', clickCount);
     animateCamera() 
   });
