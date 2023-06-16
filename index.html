@@ -8,10 +8,43 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        
+        .gif-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    body.vertical {
+      background-color: black;
+    }
     </style>
 </head>
 <body>
+      <div class="gif-container" id="gifContainer">
+    <img src="assets/img/horizontal.gif" alt="Advertencia">
+  </div>
+    
+      <script>
+        // Función para mostrar u ocultar el mensaje dependiendo de la orientación
+        function handleOrientationChange() {
+      var gifContainer = document.getElementById('gifContainer');
+      var body = document.body;
+
+      if (window.orientation === 90 || window.orientation === -90) {
+        gifContainer.style.display = 'none'; // Orientación horizontal
+        body.classList.remove('vertical');
+      } else {
+        gifContainer.style.display = 'block'; // Orientación vertical
+        body.classList.add('vertical');
+      }
+    }
+    
+        // Agregar el evento de cambio de orientación
+        window.addEventListener('orientationchange', handleOrientationChange);
+    
+        // Ejecutar la función al cargar la página
+        handleOrientationChange();
+      </script>
     <canvas class="webgl"></canvas>
     <script type="module" src="index.js"></script>
     <script src="asd/tween.js-main/dist/tween.umd.js"></script>
@@ -26,6 +59,3 @@
     <img class="image" src="assets/img/logoCV1.png" alt="Imagen" id="logoCV">
 </body>
 </html>
-
-
-
