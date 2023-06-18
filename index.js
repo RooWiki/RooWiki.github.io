@@ -11,7 +11,7 @@ const button2 = document.getElementById('button2');
 const button3 = document.getElementById('button3');
 const button4 = document.getElementById('button4');
 const loader = new GLTFLoader();
-
+let clickCount = 0; // Contador de clics
 
 loader.load('assets/logo.glb', function (glb) {
    const root = glb.scene;
@@ -153,18 +153,18 @@ scene.add(cartel);
 
 // Puerta Trasera
 // azul 
-const Trasera1 = new THREE.PointLight(0x00C5FF, 100, 4);
+const Trasera1 = new THREE.PointLight(0x1FFF00, 30, 4);
 Trasera1.position.set(3, 1.5, -4);
 Trasera1.castShadow = false
 scene.add(Trasera1);
 
-const OVNI = new THREE.PointLight(0x1FFF00, 30, 5);
+const OVNI = new THREE.PointLight(0xAA00FF, 30, 5);
 OVNI.position.set(4.5, 1.5, 4.5);
 OVNI.castShadow = false
 scene.add(OVNI);
 
-const OVNI2 = new THREE.PointLight(0xAA00FF, 30, 3);
-OVNI2.position.set(3.2, 2.5, 0);
+const OVNI2 = new THREE.PointLight(0x1FFF00, 30, 6);
+OVNI2.position.set(6.2, 4.5, -6);
 OVNI2.castShadow = false
 scene.add(OVNI2);
 
@@ -194,6 +194,8 @@ const sizes = {
 // Camara
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(2, 2.5, 7)
+camera.lookAt(0,0,0)
+
 
 const positions = [{
       x: 2,
@@ -211,19 +213,48 @@ const positions = [{
       z: -1.5
    },
    {
-      x: 0,
-      y: 1,
-      z: -3
+      x: 0.5,
+      y: 1.1,
+      z: -2.3
    },
    {
-      x: 5,
-      y: 1,
-      z: 0
+      x: 2.5,
+      y: 0.6,
+      z: -0.5
    }
 ];
 
-let clickCount = 0; // Contador de clics
+const lookats = [{
+   x: 0,
+   y: 1.2,
+   z: 0
+},
+{
+   x: 0,
+   y: 1,
+   z: 0
+},
+{
+   x: 0,
+   y: 1,
+   z: 0
+},
+{
+   x: 0.5,
+   y: 1,
+   z: 0
+},
+{
+   x: 3,
+   y: 0.7,
+   z: -2
+},
+];
 
+
+
+
+console.log(clickCount);
 logoCV.addEventListener('click', () => {
    clickCount = 0;
    console.log('Se ha hecho clic en el botón 0. clickCount =', clickCount);
@@ -253,25 +284,25 @@ button4.addEventListener('click', () => {
    console.log('Se ha hecho clic en el botón 4. clickCount =', clickCount);
    animateCamera()
 });
-
+camera.target = new THREE.Vector3();
 function animateCamera() {
    if (clickCount < positions.length) {
       const position = positions[clickCount];
+      const lookAt = lookats[clickCount];
+      
       new TWEEN.Tween(camera.position)
          .to(position, 2000) // Duración de la animación en milisegundos
          .easing(TWEEN.Easing.Quadratic.Out)
-         .onComplete(() => {
-            // Animación completada, incrementar el contador de clics y permitir otro clic
-            clickCount++;
-            console.log('clickCount: ' + clickCount);
+         .start();
+      
+         new TWEEN.Tween(camera.target)
+         .to(lookAt, 2000) // Duración de la animación en milisegundos
+         .easing(TWEEN.Easing.Quadratic.Out)
+         .onUpdate(() => {
+            camera.lookAt(camera.target);
          })
          .start();
-      console.log('Carga');
-   } else {
-      console.log('Animación completada');
-      clickCount = 0
-      animateCamera();
-   }
+   } 
 }
 
 scene.add(camera);
@@ -304,24 +335,15 @@ rotationSpeed
 
 function animate() {
    // Actualizar los tweens en cada fotograma
-   function onCanvasClick(event) {
-      //createCameraAnimations();
-   }
    TWEEN.update();
 
    if (giro11) giro11.rotation.x += rotationSpeed;
    if (giro22) giro22.rotation.z += rotationSpeed;
    if (giro33) giro33.rotation.y += rotationSpeed;
 
-
-   // Apuntar la camara
-   camera.lookAt(0.0, 1, 0.0);
-
    renderer.shadowMap.enabled = true
    renderer.gammaOuput = true
-   renderer.domElement.addEventListener('click', onCanvasClick);
    requestAnimationFrame(animate);
    renderer.render(scene, camera);
 }
-//updateCameraPosition();
 animate()
