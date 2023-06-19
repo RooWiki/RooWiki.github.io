@@ -114,6 +114,44 @@ body {
 	border-radius: 50%;
 	animation: spin 1s infinite linear;
   }
+  .social-buttons-container {
+	background-color: transparent;
+	color: white;
+	border: none;
+	margin-right: 10px;
+	margin: 10px;
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px black;
+	margin-right: 10px;
+  }
+  .social-buttons-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .social-buttons-container a {
+	display: inline-block;
+	margin: 10px;
+	border-radius: 10%;
+	overflow: hidden;
+  }
+  
+  .social-buttons-container img {
+	display: block;
+	width: 50px; /* Ajusta el tamaño según tus necesidades */
+	height: 50px; /* Ajusta el tamaño según tus necesidades */
+  }
+  .social-buttons-container button {
+	margin: 10px;
+  }
+  
   
   @keyframes spin {
 	0% {

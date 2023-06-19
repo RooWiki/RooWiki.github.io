@@ -13,6 +13,40 @@ const button4 = document.getElementById('button4');
 const loader = new GLTFLoader();
 let clickCount = 0; // Contador de clics
 
+// Obtén las referencias a los botones
+const ItchButton = document.getElementById('Itch-button');
+const LinkedinButton = document.getElementById('Linkedin-button');
+const GithubButton = document.getElementById('Github-button');
+const BehanceButton = document.getElementById('Behance-button');
+const SketchfabButton = document.getElementById('Sketchfab-button');
+const ArtstationButton = document.getElementById('Artstation-button');
+
+// Agrega los event listeners para cada botón
+/*ItchButton.addEventListener('click', () => {
+  window.open('https://roo-wiki.itch.io/', '_blank');
+});
+
+LinkedinButton.addEventListener('click', () => {
+  window.open('https://www.linkedin.com/in/bisarremochi/', '_blank');
+});
+
+GithubButton.addEventListener('click', () => {
+  window.open('https://github.com/RooWiki', '_blank');
+});
+
+BehanceButton.addEventListener('click', () => {
+  window.open('https://www.behance.net/santi857', '_blank');
+});
+
+SketchfabButton.addEventListener('click', () => {
+   window.open('https://sketchfab.com/andrespineros', '_blank');
+ });
+
+ ArtstationButton.addEventListener('click', () => {
+   window.open('https://www.artstation.com/roowiki', '_blank');
+ });
+*/
+
 loader.load('assets/logo.glb', function (glb) {
    const root = glb.scene;
 
@@ -209,8 +243,8 @@ const positions = [{
    },
    {
       x: -4.6,
-      y: 1,
-      z: -1.5
+      y: 1.5,
+      z: -1
    },
    {
       x: 0.5,
@@ -235,9 +269,9 @@ const lookats = [{
    z: 2
 },
 {
-   x: 0,
-   y: 0.5,
-   z: 0
+   x: -2,
+   y: 0.0,
+   z: -1
 },
 {
    x: 0.5,
