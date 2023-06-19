@@ -154,7 +154,7 @@ scene.add(cartel);
 // Puerta Trasera
 // azul 
 const Trasera1 = new THREE.PointLight(0x1FFF00, 30, 4);
-Trasera1.position.set(3, 1.5, -4);
+Trasera1.position.set(4, 2, -2);
 Trasera1.castShadow = false
 scene.add(Trasera1);
 
@@ -205,10 +205,10 @@ const positions = [{
    {
       x: 0,
       y: 1.5,
-      z: 5
+      z: 4
    },
    {
-      x: -5,
+      x: -4.6,
       y: 1,
       z: -1.5
    },
@@ -231,8 +231,8 @@ const lookats = [{
 },
 {
    x: 0,
-   y: 1,
-   z: 0
+   y: 0,
+   z: 2
 },
 {
    x: 0,
@@ -246,7 +246,7 @@ const lookats = [{
 },
 {
    x: 3,
-   y: 0.7,
+   y: 0.8,
    z: -2
 },
 ];
@@ -329,7 +329,12 @@ function onWindowResize() {
    camera.updateProjectionMatrix();
    renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
+window.addEventListener('load', () => {
+   const loaderContainer = document.getElementById('loader-container');
+   loaderContainer.style.display = 'none';
+   animateCamera()
+   clickCount = 0;
+ });
 ////////////////////////////////////////////////////// Función de manejo del evento de clic en el lienzo
 rotationSpeed
 
