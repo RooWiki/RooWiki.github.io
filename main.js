@@ -524,10 +524,7 @@ class CharacterControllerDemo {
     directionalLight2.position.set(-1, 1, -1); // Configurar la dirección de la luz (x, y, z)
     this._scene.add(directionalLight2);
     
-    const controls = new OrbitControls(
-      this._camera, this._threejs.domElement);
-    controls.target.set(0, 10, 0);
-    controls.update();
+
     this._threejs.domElement.addEventListener('click', (event) => this._OnClick(event), false);
 
     const loader = new THREE.CubeTextureLoader();
