@@ -113,9 +113,6 @@ class BasicCharacterController {
     if (this._input._keys.forward) {
       velocity.z += acc.z * timeInSeconds;
     }
-    if (this._input._keys.backward) {
-      velocity.z -= acc.z * timeInSeconds;
-    }
     if (this._input._keys.left) {
       _A.set(0, 1, 0);
       _Q.setFromAxisAngle(_A, 4.0 * Math.PI * timeInSeconds * this._acceleration.y);
@@ -162,7 +159,6 @@ class BasicCharacterControllerInput {
   _Init() {
     this._keys = {
       forward: false,
-      backward: false,
       left: false,
       right: false,
       space: false,
@@ -177,18 +173,28 @@ class BasicCharacterControllerInput {
       case 87: // w
         this._keys.forward = true;
         break;
+      case 38: // up
+        this._keys.forward = true;
+        break;
+
       case 65: // a
         this._keys.left = true;
         break;
-      case 83: // s
-        this._keys.backward = true;
+      case 37: // left
+        this._keys.left = true;
         break;
+
       case 68: // d
         this._keys.right = true;
         break;
+      case 39: // right
+        this._keys.right = true;
+        break;
+
       case 32: // SPACE
         this._keys.space = true;
         break;
+
       case 16: // SHIFT
         this._keys.shift = true;
         break;
@@ -200,18 +206,28 @@ class BasicCharacterControllerInput {
       case 87: // w
         this._keys.forward = false;
         break;
+      case 38: // up
+        this._keys.forward = false;
+        break;
+
       case 65: // a
         this._keys.left = false;
         break;
-      case 83: // s
-        this._keys.backward = false;
+      case 37: // left
+        this._keys.left = false;
         break;
+
       case 68: // d
         this._keys.right = false;
         break;
+      case 39: // right
+        this._keys.right = false;
+        break;
+
       case 32: // SPACE
         this._keys.space = false;
         break;
+
       case 16: // SHIFT
         this._keys.shift = false;
         break;
