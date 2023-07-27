@@ -1,169 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Sanket Solanki</title>
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>RooWiki</title>
-  <link rel="stylesheet" type="text/css" href="base.css">
-  <link rel="icon" type="image/x-icon" href="resources/ico.ico">
-  <!-- Importar la fuente Circular Std desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <audio id="click-audio" src="resources/Sound/interface-1-126517.mp3"></audio>
-  <style>
-    /* Estilos para la pantalla de carga */
-    #loader-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #FFF6F4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <!--<mete http-quiv="X-UA-Compatible" content="IE=edge">-->
+    <meta name="viewport" content="width = device-width, initial-scale=1.0">
+    <title>RooWiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/ico.ico">
+  </head>
+  <body>
+    <div class="gif-container" id="gifContainer">
+      <img src="assets/img/horizontal1.gif " alt="Advertencia">
+    </div>
+    <div class="black-overlay" id="blackOverlay"></div>
+    <div class="rotate-message" id="rotateMessage">Please rotate your device</div>
+    <script>
+      // Función para mostrar u ocultar el mensaje dependiendo de la orientación
+      function handleOrientationChange() {
+        var gifContainer = document.getElementById('gifContainer');
+        var blackOverlay = document.getElementById('blackOverlay');
+        var rotateMessage = document.getElementById('rotateMessage');
+        var body = document.body;
+        console.log(window.orientation);
+        if (window.orientation === 90 || window.orientation === -90 || window.orientation === undefined) {
+          console.log(window.orientation);
+          gifContainer.style.display = 'none'; // Orientación horizontal
+          blackOverlay.style.display = 'none'; // Ocultar fondo negro
+          rotateMessage.style.display = 'none'; // Ocultar mensaje
+          body.classList.remove('vertical');
+        } else {
+          gifContainer.style.display = 'block'; // Orientación vertical
+          blackOverlay.style.display = 'block'; // Mostrar fondo negro
+          rotateMessage.style.display = 'block'; // Mostrar mensaje
+          body.classList.add('vertical');
+        }
+      }
+      // Agregar el evento de cambio de orientación
+      window.addEventListener('orientationchange', handleOrientationChange);
+      // Ejecutar la función al cargar la página
+      handleOrientationChange();
+    </script>
+    <canvas class="webgl"></canvas>
+    <script type="module" src="index.js"></script>
+    <script src="asd/tween.js-main/dist/tween.umd.js"></script>
+    <div class="button-container">
+      <button id="button1" class="button">Resume</button>
+      <button id="button2" class="button">Education</button>
+      <button id="button3" class="button">Skills</button>
+      <button id="button4" class="button">Experience</button>
 
-    #loader {
-      border: 8px solid #FFECAF;
-      border-top: 8px solid #F31559;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Estilos para la pantalla con el botón */
-    #scene-container {
-      display: none; /* Ocultar la escena inicialmente */
-    }
-
-    #next-scene-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #FFF6F4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #next-scene-btn {
-      width: 150px; /* Ajustar el ancho del botón */
-      height: 150px; /* Ajustar el alto del botón */
-      background-color: #FFF6F4;
-      color: #F86F03;
-      font-size: 30px; /* Ajustar el tamaño de fuente del texto */
-      border: 5px solid #525FE1;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Circular Std', sans-serif; /* Aplicar la fuente Circular Std */
-      font-weight: 600; /* Puedes ajustar el grosor de la fuente según las opciones disponibles en la fuente */
-      font-size: 20px; /* Puedes ajustar el tamaño de fuente según tus preferencias */
-    }
-
-    /* Estilo para el texto dentro del botón */
-    #next-scene-btn span {
-      margin-top: -2px; /* Ajustar el margen del texto */
-    }
-    #bottom-text {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #525FE1;
-      font-family: 'Circular Std', sans-serif;
-      font-size: 18px;
-      text-align: center;
-    }
-    #next-scene-btn {
-      transition: transform 0.2s ease; /* Ajusta la duración y el tipo de curva de la transición según tus preferencias */
-    }
-    
-  </style>
-</head>
-
-<body>
-  <!-- Pantalla de carga -->
-  <div id="loader-container">
-    <div id="loader"></div>
-  </div>
-
-  <!-- Contenedor de la escena -->
-  <div id="scene-container">
-    <!-- Coloca aquí el código para renderizar la escena -->
-    <script src="./main.js" type="module"></script>
-  </div>
-
-  <!-- Pantalla con el botón (oculta inicialmente) -->
-  <div id="next-scene-container" style="display: none; display: flex; flex-direction: column; align-items: center;">
-    <!-- Texto arriba del botón -->
-    <div id="button-text2" style="font-size: 200px; font-weight: bold; color: #525FE1; font-family: 'Circular Std', sans-serif; margin-bottom: 20px;">SINGAPORE</div>
-    <button id="next-scene-btn" onclick="playClickSound(); showNextScene()" onmouseenter="shrinkButton(true)" onmouseleave="shrinkButton(false)">
-      <span>START</span>
-    </button>
-    <!-- Texto en la parte inferior del botón -->
-    <div id="bottom-text">This is a Beta made by Andres Piñeros for the project of Sanket Solanki</div>
-  </div>
-
-  <script>
-    // Mostrar la pantalla con el botón una vez que la escena haya terminado de cargar
-    function shrinkButton(shrink) {
-    const button = document.getElementById('next-scene-btn');
-    if (shrink) {
-      button.style.transform = 'scale(0.9)'; // Encoger el botón cuando el mouse está sobre él
-    } else {
-      button.style.transform = 'scale(1)'; // Restaurar el tamaño original del botón cuando el mouse sale
-    }
-  }
-
-  // Mostrar la pantalla con el botón una vez que la escena haya terminado de cargar
-  function showNextScene() {
-    const nextSceneContainer = document.getElementById('next-scene-container');
-    nextSceneContainer.style.display = 'none'; // Ocultar la pantalla con el botón después de hacer clic (opcional)
-  }
-
-  // Evento de carga de la escena
-  window.addEventListener('load', () => {
-    const loaderContainer = document.getElementById('loader-container');
-    loaderContainer.style.display = 'none'; // Ocultar la pantalla de carga
-    
-    const sceneContainer = document.getElementById('scene-container');
-    sceneContainer.style.display = 'block'; // Mostrar la escena
-    
-    const nextSceneContainer = document.getElementById('next-scene-container');
-    nextSceneContainer.style.display = 'flex'; // Mostrar la pantalla con el botón
-  });
-
-  // Función para encojer el botón cuando el mouse está sobre él
-  function shrinkButton(shrink) {
-    const button = document.getElementById('next-scene-btn');
-    if (shrink) {
-      button.style.transform = 'scale(0.9)'; // Encoger el botón cuando el mouse está sobre él
-    } else {
-      button.style.transform = 'scale(1)'; // Restaurar el tamaño original del botón cuando el mouse sale
-    }
-  }
-
-  // Función para reproducir el sonido cuando se hace clic en el botón
-  function playClickSound() {
-    const clickAudio = document.getElementById('click-audio');
-    clickAudio.currentTime = 0; // Reiniciar la reproducción si ya se está reproduciendo
-    clickAudio.play(); // Reproducir el sonido
-  }
-
-  </script>
-</body>
-
+    <div class="social-buttons-container">
+      <h2>Portafolios:</h2>
+  <a href="https://roo-wiki.itch.io/" target="_blank">
+    <img src="/assets/img/Itch.jpg" alt="Itch">
+  </a>
+  <a href="https://www.linkedin.com/in/bisarremochi/" target="_blank">
+    <img src="/assets/img/Linkedin.jpg" alt="Linkedin">
+  </a>
+  <a href="https://github.com/RooWiki" target="_blank">
+    <img src="/assets/img/Github.jpg" alt="Github">
+  </a>
+  <a href="https://www.behance.net/santi857" target="_blank">
+    <img src="/assets/img/Behance.jpg" alt="Behance">
+  </a>
+  <a href="https://sketchfab.com/andrespineros" target="_blank">
+    <img src="/assets/img/Sketchfab.jpg" alt="Sketchfab">
+  </a>
+  <a href="https://www.artstation.com/roowiki" target="_blank">
+    <img src="/assets/img/Artstation.jpg" alt="Artstation">
+  </a>
+</div>
+    <div id="loader-container">
+      <div id="loader"></div>
+    </div>
+    <img class="image" src="assets/img/logoCV1.png" alt="Imagen" id="logoCV">
+  </body>
 </html>
